@@ -1,0 +1,45 @@
+<!-- Collin Dukes -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Exercise 7</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <!-- Two input areas given unique IDs with placeholder text to inform the user what to enter -->
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+    <!-- The calculate button that acts as a trigger for the script by using a listener -->
+    <button id="btn-submit">Calculate</button>
+    <!-- The div used to display the calculated output -->
+    <div id="output"></div>
+    
+    <script>
+        //Sets variables equal to the input by using getElementById
+      var priceInput = document.getElementById('txt-price');
+      var quantityInput = document.getElementById('txt-quantity');
+      var submitBtn = document.getElementById('btn-submit');
+      var output = document.getElementById('output');
+        //Listener that activates when the button is clicked
+      submitBtn.addEventListener('click', function () {
+        var price = priceInput.value;
+        var quanity = quantityInput.value;
+        price = +price;
+        quanity = +quanity;
+        //Input validation
+        if (Number.isNaN(price) || Number.isNaN(quanity)) {
+          output.innerHTML = 'Invalid input';
+          return;
+        }
+        //main calculation is done
+        var totalPrice = price * quanity;
+        //Rounds decimal
+        totalPrice = Math.round(totalPrice * 100) / 100;
+        //output
+        output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice;
+      });
+    </script>
+</body>
+</html>
